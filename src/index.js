@@ -80,7 +80,7 @@ function getAndSetInfo(cityName){
 
     Wind = res.data.wind.speed;
     let WindWiew = document.querySelector("#Wind");
-    WindWiew.innerHTML = `Wind: ${Wind}km/h`;
+    WindWiew.innerHTML = `Wind: ${Wind} km/h`;
   });
 }
 
