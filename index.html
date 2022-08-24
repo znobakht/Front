@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Parcel Sandbox</title>
+    <title>Weather App</title>
     <meta charset="UTF-8" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link
@@ -10,7 +10,7 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
-    <link href="src/styles.css" />
+    <link rel="stylesheet" href="src/styles.css" />
   </head>
 
   <body>
@@ -18,7 +18,7 @@
     </br>
   </br>
       <form class="form-inline" id ="cityinputform">
-        <div class="form-group mb-2">
+        <!-- <div class="form-group mb-2">
           <input
             type="text"
             readonly
@@ -26,16 +26,17 @@
             id="staticEmail2"
             value="Enter city name:"
           />
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
+        </div> -->
+        <div class="form-group mr-sm-3 mb-2">
           <input
             type="text"
             class="form-control"
             id="inputCityName"
-            placeholder="City name"
+            placeholder="Enter a city name"
+            style="width: 24rem;"
           />
         </div>
-        <button type="submit" class="btn btn-primary mb-2">
+        <button type="submit" class="btn btn-primary mb-2 ">
           Search
         </button>
       </form>
@@ -47,6 +48,9 @@
                   <h5 class="card-title" id="view-name-city">Tehran</h5>
                   <h5 class="card-title" id="view-time"></h5>
                   <h5 class="card-title" id="temperature"></h5>
+                  <a href="#" id="celsius-link">°C</a>
+                  /
+                  <a href="#" id="fahrenheit-link">°F</a>
                   
                   <div class="row">
                       <div class="col-sm">
@@ -70,7 +74,7 @@
           </div>
           <br/>
 
-          <div><form class="form-inline" id ="currentinputform">
+          <!-- <div><form class="form-inline" id ="currentinputform">
             
             <button type="submit" class="btn btn-primary mb-2">
               Get your current temperature!
@@ -104,7 +108,7 @@
                 </div>
     
                 
-              </div></div>
+              </div></div> -->
           
       </br>
 
