@@ -1,6 +1,7 @@
-const apiKey = "451bc985c8260a70ae8fc1c1627aed25";
+// const apiKey = "451bc985c8260a70ae8fc1c1627aed25";
 // const apiKey = "bd8e113f7e0c7e81c27e7f9636cbc851";
 // const apiKey = "2b906cc87c244677c15f8d1531da22aa";
+const apiKey = "eb2ee96fce77dd8a4eaad97e550c01d8";
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather";
 let units = "metric";
 
@@ -18,7 +19,7 @@ const weekDays = [
 
 
 function displayForecast(lat, lon){
-  const forecastURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,daily&appid=${apiKey}`;
+  const forecastURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&cnt=6&appid=${apiKey}&units=metric`;
   // const forecastURL = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=6&appid=${apiKey}&units=metric`;
   console.log(forecastURL)
   let forecastElement = document.querySelector("#forecast");
@@ -27,14 +28,14 @@ function displayForecast(lat, lon){
     console.log(res.data)
     const forecastDays = res.data.daily;
     forecastDays.forEach((day)=>{
-      // let dayTime = day.dt;
+      let dayTime = new Date(day.dt*1000);
       // let date = dayTime.getDay()
       forecastElement.innerHTML += `<div class="col-2">
                       <div class="weather-forecast-date">
-                        ${weekDays[day.dt.getDay()]}
+                        ${weekDays[dayTime.getDay()]}
                       </div>
                       <div>
-                        ${day.weather.main}
+                        ${day.weather[0].main}
                       </div>
                       <div class="weather-forecast-tmp">
                         <span class="weather-forecast-maxTmp">
