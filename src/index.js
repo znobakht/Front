@@ -14,6 +14,40 @@ const weekDays = [
   "Saturday"
 ];
 
+
+function displayForecast(lat, lon){
+  const forecastURL = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=hourly,current,minutely,alerts&appid=${apiKey}`;
+  // const forecastURL = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=6&appid=${apiKey}&units=metric`;
+  console.log(forecastURL)
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = "";
+  axios.get(forecastURL).then((res)=>{
+    console.log(res.data)
+    const forecastDays = res.data.daily;
+    forecastDays.forEach((day)=>{
+      // let dayTime = day.dt;
+      // let date = dayTime.getDay()
+      forecastElement.innerHTML += `<div class="col-2">
+                      <div class="weather-forecast-date">
+                        ${weekDays[day.dt.getDay()]}
+                      </div>
+                      <div>
+                        ${day.weather.main}
+                      </div>
+                      <div class="weather-forecast-tmp">
+                        <span class="weather-forecast-maxTmp">
+                          ${Math.round(day.temp.max)}
+                        </span>
+                        <span class="weather-forecast-minTmp">${Math.round(
+                          day.temp.min
+                        )}</span>
+                      </div>
+                    </div>`;
+    })
+  })
+  
+}
+
 getAndSetInfo('Tehran');
 
 let cityInputForm = document.querySelector("#cityinputform");
@@ -53,7 +87,7 @@ function getAndSetInfo(cityName){
   const cityUrl = `${baseUrl}?q=${cityName}&appid=${apiKey}&units=${units}`;
   axios.get(cityUrl).then((res) => {
     let maxTmp, minTmp, Wind, Mood, Humidity;
-    // console.log(res.data);
+    console.log(res.data);
     temperature = res.data.main.temp;
     temperature = Math.round(temperature);
 
@@ -81,6 +115,9 @@ function getAndSetInfo(cityName){
     Wind = res.data.wind.speed;
     let WindWiew = document.querySelector("#Wind");
     WindWiew.innerHTML = `Wind: ${Wind} km/h`;
+
+    console.log('before')
+    displayForecast(res.data.coord.lat, res.data.coord.lon);
   });
 }
 
