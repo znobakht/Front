@@ -1,4 +1,6 @@
 const apiKey = "451bc985c8260a70ae8fc1c1627aed25";
+// const apiKey = "bd8e113f7e0c7e81c27e7f9636cbc851";
+// const apiKey = "2b906cc87c244677c15f8d1531da22aa";
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather";
 let units = "metric";
 
@@ -16,7 +18,7 @@ const weekDays = [
 
 
 function displayForecast(lat, lon){
-  const forecastURL = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=hourly,current,minutely,alerts&appid=${apiKey}`;
+  const forecastURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,daily&appid=${apiKey}`;
   // const forecastURL = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=6&appid=${apiKey}&units=metric`;
   console.log(forecastURL)
   let forecastElement = document.querySelector("#forecast");
