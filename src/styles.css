@@ -8,3 +8,8 @@ li {
 #temperature {
   display: inline;
 }
+
+.weather-forcast{
+  margin-top: 20px;
+  text-align: center;
+}
