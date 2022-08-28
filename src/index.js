@@ -34,16 +34,19 @@ function displayForecast(lat, lon){
                       <div class="weather-forecast-date">
                         ${weekDays[dayTime.getDay()]}
                       </div>
+                      <img src="http://openweathermap.org/img/wn/${
+                        day.weather[0].icon
+                      }@2x.png" alt="" width="42" />
                       <div>
                         ${day.weather[0].main}
                       </div>
                       <div class="weather-forecast-tmp">
                         <span class="weather-forecast-maxTmp">
-                          ${Math.round(day.temp.max)}
+                          ${Math.round(day.temp.max)}°C/
                         </span>
                         <span class="weather-forecast-minTmp">${Math.round(
                           day.temp.min
-                        )}</span>
+                        )}°C</span>
                       </div>
                     </div>`;
     })
