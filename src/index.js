@@ -21,11 +21,11 @@ const weekDays = [
 function displayForecast(lat, lon){
   const forecastURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&cnt=6&appid=${apiKey}&units=metric`;
   // const forecastURL = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=6&appid=${apiKey}&units=metric`;
-  console.log(forecastURL)
+  // console.log(forecastURL)
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = "";
   axios.get(forecastURL).then((res)=>{
-    console.log(res.data)
+    // console.log(res.data)
     const forecastDays = res.data.daily;
     forecastDays.forEach((day)=>{
       let dayTime = new Date(day.dt*1000);
@@ -93,7 +93,7 @@ function getAndSetInfo(cityName){
   const cityUrl = `${baseUrl}?q=${cityName}&appid=${apiKey}&units=${units}`;
   axios.get(cityUrl).then((res) => {
     let maxTmp, minTmp, Wind, Mood, Humidity;
-    console.log(res.data);
+    // console.log(res.data);
     temperature = res.data.main.temp;
     temperature = Math.round(temperature);
 
@@ -122,7 +122,7 @@ function getAndSetInfo(cityName){
     let WindWiew = document.querySelector("#Wind");
     WindWiew.innerHTML = `Wind: ${Wind} km/h`;
 
-    console.log('before')
+    // console.log('before')
     displayForecast(res.data.coord.lat, res.data.coord.lon);
   });
 }
