@@ -100,6 +100,7 @@ function getAndSetInfo(cityName){
     Mood = res.data.weather[0].main;
     let cityMood = document.querySelector("#cityMood");
     cityMood.innerHTML = Mood;
+    cityMood.innerHTML += `<img src="http://openweathermap.org/img/wn/${res.data.weather[0].icon}@2x.png" alt="" width="42" />`;
 
     let viewNameCity = document.querySelector("#view-name-city");
     viewNameCity.innerHTML = cityName;
